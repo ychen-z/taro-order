@@ -8,12 +8,11 @@ import {getFoodList} from '../../service/api/common'
 import './index.scss'
 
 function Index() {
-  const [list,
-    setList] = useState([]);
+  const [list,setList] = useState([]);
   // 订餐
-  const evOrder = (id) => {
+  const evOrder = (id,name) => {
     Taro.navigateTo({
-      url: `/pages/post-order/index?id=` + id
+      url: `/pages/post-order/index?id=` + id +'&name='+name
     })
   }
 
@@ -28,7 +27,7 @@ function Index() {
 
         <View className='at-row at-row--wrap'>
           {list.map(item =><View className='at-col-6' onClick={
-            evOrder
+            ()=>evOrder(item.id,item.foodName)
           }
           > <AtCard
             note={item.foodStyle}

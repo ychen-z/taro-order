@@ -3,19 +3,7 @@ export const isDev = process.env.NODE_ENV === 'development'
 export const isMock = true
 export const isTest = false
 
-let baseURL
-// H5
-if (process.env.TARO_ENV === 'h5') {
-  baseURL = isDev ? (isMock ? '/mock' : isTest ? '/mock/test' : '/mock/dev') : '/'
-} else {
-  baseURL = isDev
-    ? isMock
-      ? 'https://nei.netease.com/api/apimock-v2/ba3e753ea4e356a8b856fff749e8ce15'
-      : isTest
-      ? 'http://10.171.160.132:8800'
-      : 'http://10.171.160.65:8800'
-    : 'https://nei.netease.com/api/apimock-v2/ba3e753ea4e356a8b856fff749e8ce15'
-}
+let baseURL=''
 
 export const BASE_URL = baseURL
 

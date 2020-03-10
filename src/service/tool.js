@@ -20,7 +20,7 @@ const customInterceptor = chain => {
     .catch(res => {
       // 这个catch需要放到前面才能捕获request本身的错误
       Taro.hideLoading() // 强制取消加载动画
-      return showError(res.errMsg)
+      return showError(res.message)
     })
     .then(res => {
       /**
@@ -35,22 +35,10 @@ const customInterceptor = chain => {
       let { statusCode } = res,
         data = res.data || {},
         code = data.code ? data.code : statusCode
-
-      //   return Promise.resolve(data.data || {})
-
-      // 未登录
-      if (code === ServerCode.NO_LOGIN) {
-        Taro.navigateTo({
-          url: '/pages/login/index'
-        })
-        return showError(data.msg || ServerCodeMap[code])
-      }
-
       // 其他异常捕获(状态码非200、400)
       if (![ServerCode.SUCCESS, ServerCode.CONTINUE].includes(code)) {
-        return showError(data.msg || ServerCodeMap[code])
+        return showError(data.message || ServerCodeMap[code])
       }
-
       return Promise.resolve(data.data || {})
     })
 }

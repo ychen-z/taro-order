@@ -1,14 +1,18 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View,Text} from '@tarojs/components'
-import {AtForm, AtInput, AtButton} from 'taro-ui'
+import {AtForm, AtInput, AtButton,AtToast} from 'taro-ui'
+import {postOrder} from '../../service/api/common'
+import {queryString} from '../../utils/common';
 import './index.scss'
 
 export default class Index extends Component {
     constructor() {
         super(...arguments)
+        this.foodId = queryString().id
+        this.foodName = queryString().name
         this.state = {
             roomNum: '',
-            tel:""
+            tel:"",
         }
     }
     componentWillMount() {}
@@ -34,19 +38,30 @@ export default class Index extends Component {
     onSubmit() {
         console.log(this.state)
         // 1、发起订单
-        // 2、成功回调，跳转到订单页面
-        Taro.redirectTo({
-            url: `/pages/my/index`
+        postOrder({
+            foodId: this.foodId,
+            ...this.state
+        }).then(res=>{
+            Taro.showToast({
+                title: '操作成功',
+                icon: 'none'
+              })
+            // 2、成功回调，跳转到订单页面
+            Taro.redirectTo({
+                url: `/pages/my/index`
+            })
         })
     }
+
     onReset() {
         
     }
 
     render() {
+        console.log(queryString())
         return (
             <View className='m-post-order'>
-                <View className='title'><Text >您选择的是A套餐</Text></View>
+                <View className='title'><Text >您选择的是{this.foodName}</Text></View>
                 <AtForm
                   onSubmit={this
                     .onSubmit
