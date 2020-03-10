@@ -1,0 +1,13 @@
+
+@import "~taro-ui/dist/style/components/button.scss";
+@import "~taro-ui/dist/style/components/loading.scss";
+
+.m-index {
+    .content {
+        padding: 30px 0;
+
+        .at-col-6 {
+            margin-bottom: 16px;
+        }
+    }
+}
