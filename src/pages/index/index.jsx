@@ -22,7 +22,7 @@ function Index() {
 
   return (
     <View className='m-index'>
-      <NavBar title='我要点菜' icon='user' />
+      <NavBar title='我要订餐' icon='user' />
       <View className='content'>
 
         <View className='at-row at-row--wrap'>

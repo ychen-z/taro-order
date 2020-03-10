@@ -29,13 +29,13 @@ export default class Index extends Component {
   }
 
   config = {
-    navigationBarTitleText: "我的订单"
+    navigationBarTitleText: "个人中心"
   };
 
   render() {
     return (
       <View className='m-my-order'>
-        <Navbar title='我的订单' icon='user' />
+        <Navbar title='个人中心' icon='user' />
         <View className='at-row count'>
         <View className='at-col at-col-2'><AtAvatar circle image='https://jdc.jd.com/img/200'></AtAvatar></View>
     <View className='at-col at-col-8'><Text className='tel'>{localStorage.tel}</Text><Text className='edit'>编辑</Text></View>
