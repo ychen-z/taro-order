@@ -33,7 +33,7 @@ export default class Index extends Component {
 
   render() {
     return (
-      <View className='m-my-order'>
+      <View className='m-food'>
         <NavBar title='菜谱管理' icon='home' entryfunc={this.entryfunc} />
 
         <View onClick={this.evOrder}>
