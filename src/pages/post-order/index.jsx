@@ -40,6 +40,7 @@ export default class Index extends Component {
         // 1、发起订单
         postOrder({
             foodId: this.foodId,
+            status:0,
             ...this.state
         }).then(res=>{
             Taro.showToast({

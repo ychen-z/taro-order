@@ -3,7 +3,7 @@ import {View,Button,Text} from '@tarojs/components'
 import {AtCard} from 'taro-ui'
 import BackTabber from '../../components/back-tabber/index'
 import NavBar from '../../components/nav-bar/index'
-import { getFoodList,postFood,delFood } from "../../service/api/common";
+import { getFoodList,postFood,delFood, updateFood } from "../../service/api/common";
 import './index.scss'
 
 export default class Index extends Component {
@@ -46,6 +46,18 @@ export default class Index extends Component {
     });
   }
 
+  update =(item)=>{
+    debugger
+    updateFood({
+      ...item,foodName:'茄子',
+    }).then(res => {
+      Taro.showToast({
+        title:'成功',
+        icon:'success'
+      })
+    });
+  }
+
   entryfunc =()=>{
     Taro.navigateTo({
       url:'/pages/index/index'
@@ -64,7 +76,7 @@ export default class Index extends Component {
           }
         > <AtCard
           note={item.foodStyle}
-          extra={[<Text onClick={()=>this.delFood(item.id)}>删除</Text>]}
+          extra={[<Text onClick={()=>this.delFood(item.id)}>删除</Text>,<Text onClick={()=>this.update(item)}>编辑</Text>]}
           title={item.foodName}
           thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
         >
