@@ -1,4 +1,4 @@
 import { get, post } from '../tool'
 
-// 个人中心
-export const getPersonalInfo = data => get({ url: '/personal/info', data })
+// 获取菜单
+export const getFoodList = data => get({ url: 'http://admin.ksfmaster.com/endpoint/food/', data })
