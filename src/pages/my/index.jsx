@@ -1,7 +1,8 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
-import {AtNavBar, AtCard} from 'taro-ui'
+import {AtCard} from 'taro-ui'
 import Tabber from '../../components/tabber/index'
+import Navbar from '../../components/nav-bar/index'
 
 import './index.scss'
 
@@ -24,12 +25,7 @@ export default class Index extends Component {
   render() {
     return (
       <View className='m-my-order'>
-        <AtNavBar
-          onClickRgIconNd={this.adminEntry}
-          color='#000'
-          title='我的订单'
-          rightSecondIconType='user' 
-        />
+      <Navbar title='我的订单' icon='user' />
         <View onClick={this.evOrder}>
           <AtCard
             note='小Tips'

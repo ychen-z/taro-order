@@ -9,7 +9,6 @@ const backList =[
 
 export default function Tabber(props) {
   const [current, setCurrent] = useState(props.current || 0)
-  debugger
   const handleClick = useCallback(
     val => {
       if (val === current) return

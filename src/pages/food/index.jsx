@@ -1,7 +1,9 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
-import {AtNavBar, AtCard} from 'taro-ui'
+import {AtCard} from 'taro-ui'
 import BackTabber from '../../components/back-tabber/index'
+import NavBar from '../../components/nav-bar/index'
+
 
 import './index.scss'
 
@@ -21,21 +23,19 @@ export default class Index extends Component {
     navigationBarTitleText: '菜谱管理'
   }
 
-  backHome =()=>{
+  entryfunc =()=>{
     Taro.navigateTo({
       url:'/pages/index/index'
     })
   }
 
+
+
   render() {
     return (
       <View className='m-my-order'>
-        <AtNavBar
-          onClickRgIconNd={this.backHome}
-          color='#000'
-          title='菜谱管理'
-          rightSecondIconType='home' 
-        />
+        <NavBar title='菜谱管理' icon='home' entryfunc={this.entryfunc} />
+
         <View onClick={this.evOrder}>
           <AtCard
             note='小Tips'

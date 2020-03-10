@@ -1,6 +1,8 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
-import {AtNavBar, AtCard} from 'taro-ui'
+import { AtCard} from 'taro-ui'
+import NavBar from '../../components/nav-bar/index'
+
 import Tabber from '../../components/tabber/index'
 import './index.scss'
 
@@ -20,12 +22,7 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   }
 
-  // 管理员入口
-  adminEntry = () => {
-    Taro.navigateTo({
-      url: `/pages/order/index`
-    })
-  }
+  
 
   // 订餐
   evOrder =(id)=>{
@@ -37,13 +34,7 @@ export default class Index extends Component {
   render() {
     return (
       <View className='m-index'>
-        <AtNavBar
-          onClickRgIconNd={this.adminEntry}
-          color='#000'
-          title='我要点菜'
-          rightSecondIconType='user' 
-        />
-
+        <NavBar title='我要点菜' icon='user' />
         <View className='content' >
 
         <View className='at-row at-row--wrap'>
