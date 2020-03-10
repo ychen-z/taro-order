@@ -2,8 +2,8 @@ import Taro, {Component} from '@tarojs/taro'
 import {View} from '@tarojs/components'
 import { AtCard} from 'taro-ui'
 import NavBar from '../../components/nav-bar/index'
-
 import Tabber from '../../components/tabber/index'
+import DefaultImg from '../../assets/img/f1.jpg'
 import './index.scss'
 
 export default class Index extends Component {
@@ -47,6 +47,7 @@ export default class Index extends Component {
             >
               这也是内容区 可以随意定义功能
             </AtCard>
+            
           </View>
           <View className='at-col-6'>
             <AtCard
