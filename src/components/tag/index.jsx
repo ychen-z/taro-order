@@ -10,7 +10,7 @@ const Status ={
 }
 export default function Tag(props) {
   return (
-    <AtTag type='primary' active circle>
+    <AtTag type='primary' active={props.status!==3} circle>
       {Status[props.status || 0]}
     </AtTag>
   )

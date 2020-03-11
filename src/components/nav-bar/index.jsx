@@ -11,10 +11,10 @@ export default function NavBar(props) {
 
   return (
     <AtNavBar
-      onClickRgIconNd={props.entryfunc || entryfunc}
+      onClickRgIconSt={props.entryfunc || entryfunc}
       color='#000'
       title={props.title}
-      rightSecondIconType={props.icon}
+      rightFirstIconType={props.icon}
     />
   )
 }

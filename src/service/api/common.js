@@ -4,6 +4,7 @@ import { get, post,del,put } from '../tool'
 export const getFoodList = data => get({ url: 'http://admin.ksfmaster.com/endpoint/food/', data })
 export const postOrder = data => post({ url: 'http://admin.ksfmaster.com/endpoint/order/order', data })
 export const updateOrder = data => put({ url: 'http://admin.ksfmaster.com/endpoint/order/', data })
+export const delOrder = data => del({ url: 'http://admin.ksfmaster.com/endpoint/order/'+ data })
 export const getMyOrder= data => get({ url: 'http://admin.ksfmaster.com/endpoint/order/'+data })
 export const getAllOrder= () => get({ url: 'http://admin.ksfmaster.com/endpoint/order/' })
 

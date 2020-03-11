@@ -1,7 +1,7 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
 import { AtCard ,AtTag} from "taro-ui";
-import { getAllOrder, updateOrder } from "../../service/api/common";
+import { getAllOrder, updateOrder, delOrder } from "../../service/api/common";
 import NavBar from "../../components/nav-bar/index";
 import BackTabber from "../../components/back-tabber/index";
 import "./index.scss";
@@ -22,7 +22,7 @@ export default class Index extends Component {
   }
 
   config = {
-    navigationBarTitleText: "首页"
+    navigationBarTitleText: "订单管理"
   };
 
   entryfunc = () => {
@@ -32,12 +32,13 @@ export default class Index extends Component {
   };
 
   getName = status => {
-    return ["接单", "派送", "已签收",'完结'][status];
+    return ["接单", "派送", "已送达",'完结'][status];
   };
 
   // 处理订单
   evHandle = (item, status) => {
-    updateOrder({ ...item, status: status + 1 }).then(res => {
+    if(status>2) return;
+    updateOrder({ ...item, status: status +1 }).then(res => {
       this.setState({
         list: res.records || []
       });
@@ -46,7 +47,12 @@ export default class Index extends Component {
 
   // 删除订单
   evDelOrder = (id) =>{
-    // 删除订单
+    delOrder(id).then(res=>{
+      Taro.showToast({
+        title:'删除成功',
+        icon:'success'
+      })
+    })
   }
 
   render() {
@@ -57,15 +63,10 @@ export default class Index extends Component {
           {this.state.list.map(item => (
             <AtCard
               note={"备注：" + item.foodStyle}
+              title={item.foodName}
               extra={[
                 <AtTag onClick={() => this.evHandle(item, item.status)} circle active={item.status!=3}>
-                  {this.getName(item.status)}
-                </AtTag>,
-                item.status==3&&<Text onClick={() => this.evDelOrder(item.id)}>
-                删除
-              </Text>
-              ]}
-              title={item.foodName}
+                  {this.getName(item.status)}</AtTag>]}
             >
               <View>房间号:{item.roomNum}</View>
               <View>联系方式：{item.tel}</View>
