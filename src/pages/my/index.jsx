@@ -72,9 +72,9 @@ export default class Index extends Component {
                 }
                 title={item.foodName}
               >
-                <View>房间号:{item.roomNum}</View>
-                <View>联系方式：{item.tel}</View>
-                <View>做法：{item.foodStyle}</View>
+                <View className='room'>房间号:<Text>{item.roomNum}</Text></View>
+                <View className='tel'>联系方式：<Text>{item.tel}</Text></View>
+                <View className='desc'>简介：{item.foodStyle}</View>
               </AtCard>
             )):<Empty></Empty>}
           </View>

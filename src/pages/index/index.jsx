@@ -3,6 +3,7 @@ import {View,Text} from '@tarojs/components'
 import {AtCard,AtButton} from 'taro-ui'
 import NavBar from '../../components/nav-bar/index'
 import Tabber from '../../components/tabber/index'
+import Empty from "../../components/empty/index";
 import {getFoodList} from '../../service/api/common'
 import A0 from '../../assets/img/c1.jpg';
 import A1 from '../../assets/img/c2.jpg';
@@ -27,7 +28,7 @@ function Index() {
     <View className='m-index'>
       <NavBar title='我要订餐' icon='user' />
       <View className='content'>
-        <View className='at-row at-row--wrap'>
+      {list.length?<View className='at-row at-row--wrap'>
           {list.map((item,index) =><View className='at-col-6 order-detail'> <AtCard
             note='库存：999+份'
             title={item.foodName}
@@ -35,14 +36,14 @@ function Index() {
           >
             <View className='order-style'>
               <Text>零售价：10元</Text>
-              <Text>做法：{item.foodStyle}</Text>
+              <Text>简介：{item.foodStyle}</Text>
               </View>
             <View><AtButton type='primary' className='make-order' size='small' onClick={
             ()=>evOrder(item.id,item.foodName,index)
           }
             >预定</AtButton></View>
           </AtCard> </View>)}
-        </View>
+        </View>:<Empty text='~ 暂无套餐供应~ ' />}
       </View>
       <Tabber current={0} />
     </View>

@@ -1,9 +1,9 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View,Button,Text} from '@tarojs/components'
-import {AtCard} from 'taro-ui'
+import {AtCard,AtIcon,AtButton} from 'taro-ui'
 import BackTabber from '../../components/back-tabber/index'
 import NavBar from '../../components/nav-bar/index'
-import { getFoodList,postFood,delFood, updateFood } from "../../service/api/common";
+import { getFoodList,delFood } from "../../service/api/common";
 import './index.scss'
 
 export default class Index extends Component {
@@ -14,6 +14,16 @@ export default class Index extends Component {
     };
   }
   componentDidMount() {
+    this.getFoods()
+  }
+
+
+  config = {
+    navigationBarTitleText: '菜单管理'
+  }
+
+
+  getFoods = () =>{
     getFoodList().then(res => {
       this.setState({
         list: res || []
@@ -21,41 +31,26 @@ export default class Index extends Component {
     });
   }
 
-  config = {
-    navigationBarTitleText: '菜谱管理'
+  addFood=()=>{
+    Taro.navigateTo({
+      url:'/pages/add-food/index'
+    })
   }
 
-
-  addFood =()=>{
-    postFood({
-      foodName:'完美菜单',
-      foodStyle:'红烧'
-    }).then(res => {
-      this.setState({
-        list: res || []
-      });
-    });
-  }
-
+  // 删除菜单
   delFood =(id)=>{
-    delFood(id).then(res => {
-      Taro.showToast({
-        title:'成功',
-        icon:'success'
-      })
-    });
-  }
-
-  update =(item)=>{
-    debugger
-    updateFood({
-      ...item,foodName:'茄子',
-    }).then(res => {
-      Taro.showToast({
-        title:'成功',
-        icon:'success'
-      })
-    });
+    Taro.showModal({
+      title: '删除菜单',
+      content: '确定删除套餐吗？',
+    }).then(res=>{
+      res.confirm && delFood(id).then(res => {
+        this.getFoods()
+        Taro.showToast({
+          title:'删除成功',
+          icon:'success'
+        })
+      });
+    })
   }
 
   entryfunc =()=>{
@@ -64,26 +59,28 @@ export default class Index extends Component {
     })
   }
 
-
-
   render() {
     return (
       <View className='m-food'>
-        <NavBar title='菜谱管理' icon='home' entryfunc={this.entryfunc} />
+        <NavBar title='菜单管理' icon='home' entryfunc={this.entryfunc} />
+        <View className='content'>
+            {
+            this.state.list.map(item =>
+              <View> 
+                <AtCard
+                  extra={[<AtIcon value='trash' size='24' color='#F00' onClick={()=>this.delFood(item.id)}></AtIcon>]}
+                  title={item.foodName}
+                >
+              简介：{item.foodStyle}
+              </AtCard> 
+            </View>)
+            }
 
-        {this.state.list.map(item =><View onClick={
-            ()=>evOrder(item.id,item.foodName)
-          }
-        > <AtCard
-          note={item.foodStyle}
-          extra={[<Text onClick={()=>this.delFood(item.id)}>删除</Text>,<Text onClick={()=>this.update(item)}>编辑</Text>]}
-          title={item.foodName}
-          thumb='http://www.logoquan.com/upload/list/20180421/logoquan15259400209.PNG'
-        >
-            做法：很好吃哦！
-          </AtCard> </View>)}
+<AtButton  onClick={this.addFood} type='secondary'>+ 新增套餐</AtButton>
+        </View>
+        
 
-          <Button onClick={this.addFood}>+ 新增菜单</Button>
+          
         <BackTabber current={1} back />
       </View>
     )

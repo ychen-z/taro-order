@@ -34,6 +34,17 @@
 
         .at-card {margin: 0 0 24px 0;}
 
+
+        .room,.tel,.desc {
+            height: 60px;
+            line-height: 60px;
+            color: #ccc;
+    
+            span {
+                color: #78A4F4;
+                font-weight: 700;
+            }
+        }
         
     }
 

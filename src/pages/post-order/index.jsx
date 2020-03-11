@@ -55,11 +55,16 @@ export default class Index extends Component {
     });
   }
 
+
+  back =()=>{
+    Taro.navigateBack()
+  }
+
   render() {
     console.log(queryString());
     return (
       <View className='m-post-order'>
-        <NavBar title='购物车' icon='user' />
+        <NavBar title='购物车' icon='user' leftText='返回' onClickLeftIcon={this.back} leftIconType='chevron-left' />
         <View className='title'>
           <Text>您选择的是{this.foodName}</Text>
         </View>

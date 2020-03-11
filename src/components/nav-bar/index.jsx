@@ -11,6 +11,7 @@ export default function NavBar(props) {
 
   return (
     <AtNavBar
+      {...props}
       onClickRgIconSt={props.entryfunc || entryfunc}
       color='#000'
       title={props.title}

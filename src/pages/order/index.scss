@@ -10,4 +10,15 @@
     .at-card {
         margin-bottom: 24px;
     }
+
+    .room,.tel {
+        height: 60px;
+        line-height: 60px;
+        color: #ccc;
+
+        span {
+            color: #78A4F4;
+            font-weight: 700;
+        }
+    }
 }

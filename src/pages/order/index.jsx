@@ -14,6 +14,10 @@ export default class Index extends Component {
     };
   }
   componentDidMount() {
+    this.getOrders()
+  }
+
+  getOrders = () =>{
     getAllOrder().then(res => {
       this.setState({
         list: res.records || []
@@ -39,9 +43,11 @@ export default class Index extends Component {
   evHandle = (item, status) => {
     if(status>2) return;
     updateOrder({ ...item, status: status +1 }).then(res => {
-      this.setState({
-        list: res.records || []
-      });
+      Taro.showToast({
+        title:['已接单','赶紧去派送吧','已送达','订单已关闭'][status],
+        icon:'success'
+      })
+      this.getOrders();
     });
   };
 
@@ -66,10 +72,10 @@ export default class Index extends Component {
               title={item.foodName}
               extra={[
                 <AtTag onClick={() => this.evHandle(item, item.status)} circle active={item.status!=3}>
-                  {this.getName(item.status)}</AtTag>]}
+                  <View className={'at-icon at-icon-'+['bell','map-pin','share-2','check'][item.status]}></View> {this.getName(item.status)}</AtTag>]}
             >
-              <View>房间号:{item.roomNum}</View>
-              <View>联系方式：{item.tel}</View>
+              <View className='room'>房间号:<Text>{item.roomNum}</Text></View>
+              <View className='tel'>联系方式：<Text>{item.tel}</Text></View>
             </AtCard>
           ))}
         </View>

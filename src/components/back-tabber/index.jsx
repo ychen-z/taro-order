@@ -3,8 +3,8 @@ import { View } from '@tarojs/components'
 import { AtTabBar } from 'taro-ui'
 
 const frontList =[
-{ title: '订单管理', iconType: 'bullet-list' },
-{ title: '菜谱管理', iconType: 'folder' }
+{ title: '订单', iconType: 'bullet-list' },
+{ title: '套餐管理', iconType: 'folder' }
 ]
 export default function Tabber(props) {
   const [current, setCurrent] = useState(props.current || 0)
