@@ -26,6 +26,7 @@ class App extends Component {
       'pages/food/index',
       'pages/my/index',
       'pages/post-order/index',
+      'pages/sign/index',
     ],
     window: {
       backgroundTextStyle: 'light',

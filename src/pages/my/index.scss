@@ -5,20 +5,37 @@
         margin-bottom: 30px;
     }
 
-    .count {
-        padding: 40px 30px;
-        box-sizing: border-box;
+    .content {
+        padding: 30px;
+
+        .count {
+            padding: 40px 0;
+            box-sizing: border-box;
+        }
+    
+        .tel {
+            display: inline-block;
+            font-size: 22px;
+            min-width: 100px;
+        }
+    
+        .edit {
+            font-size: 20px;
+            margin-left: 12px;
+            color: blue;
+        }
+
+        .order-title {
+            font-size: 16px;
+            height: 64px;
+            line-height: 64px;
+            color: #999;
+        }
+
+        .at-card {margin: 0 0 24px 0;}
+
+        
     }
 
-    .tel {
-        display: inline-block;
-        font-size: 22px;
-        min-width: 100px;
-    }
-
-    .edit {
-        font-size: 20px;
-        margin-left: 12px;
-        color: blue;
-    }
+    
 }

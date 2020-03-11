@@ -14,7 +14,7 @@ export default function NavBar(props) {
       onClickRgIconNd={props.entryfunc || entryfunc}
       color='#000'
       title={props.title}
-      rightSecondIconType={props.icon||'user'}
+      rightSecondIconType={props.icon}
     />
   )
 }

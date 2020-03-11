@@ -13,7 +13,7 @@ export default class Index extends Component {
     this.foodName = queryString().name;
     this.state = {
       roomNum: "",
-      tel: ""
+      tel: localStorage.getItem('tel')
     };
   }
   config = {
@@ -33,8 +33,8 @@ export default class Index extends Component {
   }
 
   onSubmit=()=> {
-      debugger
-    console.log(this.state);
+
+    localStorage.setItem('tel',this.state.tel)
     // 1、发起订单
     postOrder({
       foodId: this.foodId,
