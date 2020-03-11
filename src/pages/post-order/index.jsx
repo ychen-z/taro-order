@@ -64,9 +64,9 @@ export default class Index extends Component {
     console.log(queryString());
     return (
       <View className='m-post-order'>
-        <NavBar title='购物车' icon='user' leftText='返回' onClickLeftIcon={this.back} leftIconType='chevron-left' />
+        <NavBar title='购物车' leftText='返回' onClickLeftIcon={this.back} leftIconType='chevron-left' />
         <View className='title'>
-          <Text>您选择的是{this.foodName}</Text>
+          <Text>您选择的是<Text style={{color:'red'}}>{this.foodName}</Text></Text>
         </View>
         <AtForm>
           <AtInput

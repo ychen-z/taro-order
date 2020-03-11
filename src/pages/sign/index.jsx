@@ -29,12 +29,17 @@ export default class Index extends Component {
     })
   }
 
+
+  back =()=>{
+    Taro.navigateBack()
+  }
+
   render() {
     return (
       <View className='m-sign'>
-        <NavBar title='账户' />
+        <NavBar title='账户' leftText='返回' onClickLeftIcon={this.back} leftIconType='chevron-left' />
         <View className='title'>
-          <Text>填写个人手机号</Text>
+          <Text>个人信息（必填）</Text>
         </View>
         <AtForm>
           <AtInput

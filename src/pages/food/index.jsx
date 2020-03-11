@@ -19,7 +19,7 @@ export default class Index extends Component {
 
 
   config = {
-    navigationBarTitleText: '菜单管理'
+    navigationBarTitleText: '套餐管理'
   }
 
 
@@ -62,7 +62,7 @@ export default class Index extends Component {
   render() {
     return (
       <View className='m-food'>
-        <NavBar title='菜单管理' icon='home' entryfunc={this.entryfunc} />
+        <NavBar title='套餐管理' icon='home' entryfunc={this.entryfunc} />
         <View className='content'>
             {
             this.state.list.map(item =>

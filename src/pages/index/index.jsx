@@ -35,13 +35,13 @@ function Index() {
             thumb={[A0,A1,A2,A3][index%4]}
           >
             <View className='order-style'>
-              <Text>零售价：10元</Text>
-              <Text>简介：{item.foodStyle}</Text>
+              <View className='money'>10$</View>
+              <View>简介：{item.foodStyle}</View>
               </View>
             <View><AtButton type='primary' className='make-order' size='small' onClick={
             ()=>evOrder(item.id,item.foodName,index)
           }
-            >预定</AtButton></View>
+            >+ 加入购物车</AtButton></View>
           </AtCard> </View>)}
         </View>:<Empty text='~ 暂无套餐供应~ ' />}
       </View>

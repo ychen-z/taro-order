@@ -52,14 +52,14 @@ export default class Index extends Component {
   render() {
     return (
       <View className='m-my-order'>
-        <Navbar title='个人中心' icon='user' />
+        <Navbar title='个人中心' />
         <View className='content'>
           <View className='at-row count'>
             <View className='at-col at-col-2'>
               <AtAvatar circle image={Person}></AtAvatar>
             </View>
             <View className='at-col at-col-8'>
-              <Text className='tel'>{localStorage.tel}</Text>
+              <Text className='telNumber'>{localStorage.tel}</Text>
               <Text className='edit' onClick={this.editCount}>修改</Text>
             </View>
           </View>
@@ -70,7 +70,7 @@ export default class Index extends Component {
                 extra={
                   <Tag status={item.status} />
                 }
-                title={item.foodName}
+                title={<View className='at-icon at-icon-bookmark'>{item.foodName}</View>}
               >
                 <View className='room'>房间号:<Text>{item.roomNum}</Text></View>
                 <View className='tel'>联系方式：<Text>{item.tel}</Text></View>
