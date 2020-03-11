@@ -14,9 +14,9 @@ import './index.scss'
 function Index() {
   const [list,setList] = useState([]);
   // 订餐
-  const evOrder = (id,name) => {
+  const evOrder = (id,name, index) => {
     Taro.navigateTo({
-      url: `/pages/post-order/index?id=` + id +'&name='+name
+      url: `/pages/post-order/index?id=` + id +'&name='+name +"&index=" +index
     })
   }
   useEffect(() => {
@@ -38,7 +38,7 @@ function Index() {
               <Text>做法：{item.foodStyle}</Text>
               </View>
             <View><AtButton type='primary' className='make-order' size='small' onClick={
-            ()=>evOrder(item.id,item.foodName)
+            ()=>evOrder(item.id,item.foodName,index)
           }
             >预定</AtButton></View>
           </AtCard> </View>)}
