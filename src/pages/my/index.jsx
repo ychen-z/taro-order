@@ -1,6 +1,6 @@
 import Taro, { Component } from "@tarojs/taro";
 import { View, Text } from "@tarojs/components";
-import { AtCard, AtAvatar, AtTag } from "taro-ui";
+import { AtCard, AtAvatar, AtIcon } from "taro-ui";
 import Tabber from "../../components/tabber/index";
 import Empty from "../../components/empty/index";
 import Tag from "../../components/tag/index";
@@ -63,7 +63,7 @@ export default class Index extends Component {
               <Text className='edit' onClick={this.editCount}>修改</Text>
             </View>
           </View>
-          <View className='order-title'>我的订单：</View>
+          <View className='order-title'><AtIcon value='shopping-cart' size='22' color='#F00'></AtIcon> 我的订单：</View>
           <View onClick={this.evOrder}>
             {this.state.list.length?this.state.list.map(item => (
               <AtCard
@@ -72,7 +72,9 @@ export default class Index extends Component {
                 }
                 title={item.foodName}
               >
-                做法：{item.foodStyle}
+                <View>房间号:{item.roomNum}</View>
+                <View>联系方式：{item.tel}</View>
+                <View>做法：{item.foodStyle}</View>
               </AtCard>
             )):<Empty></Empty>}
           </View>
