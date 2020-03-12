@@ -23,6 +23,14 @@ export default class Index extends Component {
   }
 
   onSubmit=()=> {
+    if(this.state.tel.length!=11){
+      Taro.showToast({
+        title:'手机号格式错误',
+        icon:"none"
+      })
+      return
+    }
+    
     localStorage.setItem('tel',this.state.tel)
     Taro.navigateTo({
         url:'/pages/my/index'
@@ -46,6 +54,7 @@ export default class Index extends Component {
             name='tel'
             title='手机号'
             type='text'
+            maxLength='11'
             placeholder='180....'
             value={this.state.tel}
             onChange={value => this.handleChange("tel", value)}

@@ -25,6 +25,7 @@ class App extends Component {
       'pages/order/index',
       'pages/food/index',
       'pages/add-food/index',
+      'pages/food-detail/index',
       'pages/my/index',
       'pages/post-order/index',
       'pages/sign/index',

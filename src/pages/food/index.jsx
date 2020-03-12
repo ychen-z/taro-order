@@ -75,12 +75,8 @@ export default class Index extends Component {
               </AtCard> 
             </View>)
             }
-
-<AtButton  onClick={this.addFood} type='secondary'>+ 新增套餐</AtButton>
+          <AtButton  onClick={this.addFood} type='secondary'>+ 新增套餐</AtButton>
         </View>
-        
-
-          
         <BackTabber current={1} back />
       </View>
     )

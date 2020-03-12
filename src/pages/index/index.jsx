@@ -20,6 +20,13 @@ function Index() {
       url: `/pages/post-order/index?id=` + id +'&name='+name +"&index=" +index
     })
   }
+
+  const goDetail = (id,name, index) => {
+    Taro.navigateTo({
+      url: `/pages/food-detail/index?id=` + id +'&name='+name +"&index=" +index
+    })
+  }
+
   useEffect(() => {
     getFoodList().then(data => setList(data))
   }, []);
@@ -29,9 +36,9 @@ function Index() {
       <NavBar title='我要订餐' icon='user' />
       <View className='content'>
       {list.length?<View className='at-row at-row--wrap'>
-          {list.map((item,index) =><View className='at-col-6 order-detail'> <AtCard
+          {list.map((item,index) =><View className='at-col-6 order-detail' > <AtCard
             note='库存：999+份'
-            title={item.foodName}
+            title={<Text onClick={()=>goDetail(item.id,item.foodName,index)}>{item.foodName }</Text>}
             thumb={[A0,A1,A2,A3][index%4]}
           >
             <View className='order-style'>
