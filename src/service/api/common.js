@@ -6,7 +6,7 @@ export const postOrder = data => post({ url: 'http://admin.ksfmaster.com/endpoin
 export const updateOrder = data => put({ url: 'http://admin.ksfmaster.com/endpoint/order/', data })
 export const delOrder = data => del({ url: 'http://admin.ksfmaster.com/endpoint/order/'+ data })
 export const getMyOrder= data => get({ url: 'http://admin.ksfmaster.com/endpoint/order/'+data })
-export const getAllOrder= () => get({ url: 'http://admin.ksfmaster.com/endpoint/order/' })
+export const getAllOrder= (data) => get({ url: 'http://admin.ksfmaster.com/endpoint/order/',data })
 
 
 export const postFood= (data) => post({ url: 'http://admin.ksfmaster.com/endpoint/food/',data}) //增加菜单

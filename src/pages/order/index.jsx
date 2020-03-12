@@ -18,7 +18,7 @@ export default class Index extends Component {
   }
 
   getOrders = () =>{
-    getAllOrder().then(res => {
+    getAllOrder({size:'10000'}).then(res => {
       this.setState({
         list: res.records || []
       });
